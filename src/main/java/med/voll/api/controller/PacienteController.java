@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping("pacientes")
+@RequestMapping("/pacientes")
 public class PacienteController {
     @Autowired
     private PacienteRepository repository;
@@ -41,7 +41,7 @@ public class PacienteController {
         return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     @Transactional
     public ResponseEntity excluir(@PathVariable Long id){
         var paciente = repository.getReferenceById(id);
